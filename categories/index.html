@@ -2,7 +2,18 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>Categories - Hexo</title>
+<title>Kategorien - Hexo</title>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154219631-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-154219631-1');
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -14,14 +25,20 @@
 
 
 
+<meta name="keywords" content="前端,網頁,技術,網頁開發,前端開發,JavaScript,HTML,CSS,SCSS">
+
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta property="og:url" content="https://yinmin8610.github.io/categories/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:author" content="yinmin8610">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="火箭隊培訓營">
+<meta property="article:tag" content="六角學院">
+<meta property="article:tag" content="flex">
 <meta name="twitter:card" content="summary">
 
 
@@ -58,6 +75,15 @@
     
     
     
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154219631-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-154219631-1');
+</script>
+
 
     
 
@@ -85,31 +111,34 @@
             <a class="navbar-item "
                href="/archives">文章</a>
             
-            <a class="navbar-item "
-               href="/categories/LifeStyle">Lifestyle</a>
+            <a class="navbar-item is-active"
+               href="/categories">分類</a>
             
             <a class="navbar-item "
-               href="/categories/Music">Music</a>
+               href="/tags">標籤</a>
             
             <a class="navbar-item "
-               href="/categories/Technology">Technology</a>
-            
-            <a class="navbar-item "
-               href="/about">About</a>
+               href="/about">關於我</a>
             
         </div>
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="Search" href="javascript:;">
+            <a class="navbar-item search" title="Suche" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
             
             
-            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
+            <a class="navbar-item" title="GitHub" href="https://github.com/yinmin8610" target="_blank" rel="noopener">
                 
                 <i class="fab fa-github"></i>
+                
+            </a>
+               
+            <a class="navbar-item" title="Medium" href="https://medium.com/@alice0050722" target="_blank" rel="noopener">
+                
+                <i class="fab fa-medium"></i>
                 
             </a>
                
@@ -121,13 +150,21 @@
     <section class="section section-heading">
     <div class="container">
         <div class="content">
-            <h5><i class="far fa-folder"></i>Categories</h5>
+            <h5><i class="far fa-folder"></i>Kategorien</h5>
         </div>
     </div>
 </section>
 <section class="section">
     <div class="container">
         <div class="columns is-variable is-1 is-multiline is-mobile">
+            
+            <span class="column is-narrow">
+                <a class="tag is-light article-tag" href="/categories/share/">分享&nbsp;(1)</a>
+            </span>
+            
+            <span class="column is-narrow">
+                <a class="tag is-light article-tag" href="/categories/f2e/">前端技術&nbsp;(1)</a>
+            </span>
             
         </div>
     </div>
@@ -136,7 +173,7 @@
     <div class="container">
         <div class="columns content">
             <div class="column is-narrow has-text-centered">
-                &copy; 2020 John Doe&nbsp;
+                &copy; 2020 yinmin8610&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
             </div>
@@ -147,9 +184,9 @@
                 <div class="columns is-mobile is-multiline is-centered">
                 
                     
-                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
+                <a class="column is-narrow has-text-black" title="CC" href="">
                     
-                    GitHub
+                    <i class="fab fa-creative-commons"></i>
                     
                 </a>
                 
@@ -185,7 +222,7 @@
     window.FontAwesomeConfig = {
         searchPseudoElements: true
     }
-    moment.locale("en-AU");
+    moment.locale("zh-CN");
 </script>
 
 
@@ -311,7 +348,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -324,10 +361,10 @@
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Sans Titre)',
             },
             CONTENT_URL: '/content.json',
         };
