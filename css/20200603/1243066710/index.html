@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Bootstrap 設計模式 - OOCSS - Yinmin&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="說到 OOCSS 設計模式，最具代表的應用就是 Bootstrap 了！">
+
+
+
+<meta name="keywords" content="前端,網頁,技術,網頁開發,前端開發,JavaScript,HTML,CSS,SCSS">
+
+
+
+    <meta name="description" content="說到 OOCSS 設計模式，最具代表的應用就是 Bootstrap 了！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bootstrap 設計模式 - OOCSS">
+<meta property="og:url" content="http://yinmin8610.github.io/CSS/20200603/1243066710/index.html">
+<meta property="og:site_name" content="Yinmin&#39;s blog">
+<meta property="og:description" content="說到 OOCSS 設計模式，最具代表的應用就是 Bootstrap 了！">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-1.png?alt=media&amp;token=c6309240-d6be-451a-8450-ad250ebbf46b">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-2.png?alt=media&amp;token=91eb0345-9920-429d-a476-afb690966fc0">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-3.png?alt=media&amp;token=f05fbb08-d544-46cd-8c14-3c3f3cd58442">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-4.png?alt=media&amp;token=abb92e93-16e9-442a-8b84-0d93cbdc277a">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-5.png?alt=media&amp;token=a2e04ccb-698c-4db9-b73d-b76c593afa0a">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-6.png?alt=media&amp;token=c64851eb-8fff-4eb5-9c22-1cb18948a6c3">
+<meta property="article:published_time" content="2020-06-03T09:20:00.000Z">
+<meta property="article:modified_time" content="2020-06-03T10:33:22.319Z">
+<meta property="article:author" content="yinmin8610">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="CSS 設計模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-1.png?alt=media&amp;token=c6309240-d6be-451a-8450-ad250ebbf46b">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.9.0/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154219631-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-154219631-1');
+</script>
+
+
+    
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154219631-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-154219631-1');
+</script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Yinmin&#39;s blog
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">文章</a>
+            
+            <a class="navbar-item "
+               href="/categories">分類</a>
+            
+            <a class="navbar-item "
+               href="/tags">標籤</a>
+            
+            <a class="navbar-item "
+               href="/about">關於我</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜尋" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="目錄">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#前言">1&nbsp;&nbsp;<b>前言</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#範例一">1.1&nbsp;&nbsp;範例一</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#範例二">1.2&nbsp;&nbsp;範例二</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#OOCSS">2&nbsp;&nbsp;<b>OOCSS</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#容器與內容分離">2.1&nbsp;&nbsp;容器與內容分離</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#結構與樣式分離">2.2&nbsp;&nbsp;結構與樣式分離</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#總結">3&nbsp;&nbsp;<b>總結</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/yinmin8610" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            <a class="navbar-item" title="Medium" href="https://medium.com/@alice0050722" target="_blank" rel="noopener">
+                
+                <i class="fab fa-medium"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Bootstrap 設計模式 - OOCSS
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-06-03T09:20:00.000Z" itemprop="datePublished">6月 3 2020</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/CSS/">CSS</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            10 分鐘 讀完 (約 1477 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x8AAA;&#x5230; OOCSS &#x8A2D;&#x8A08;&#x6A21;&#x5F0F;&#xFF0C;&#x6700;&#x5177;&#x4EE3;&#x8868;&#x7684;&#x61C9;&#x7528;&#x5C31;&#x662F; Bootstrap &#x4E86;&#xFF01;</p>
+<p>&#x4F60;&#x53EF;&#x80FD;&#x6703;&#x60F3;&#xFF0C;&#x81EA;&#x5DF1;&#x6709;&#x9700;&#x8981;&#x5B78;&#x9019;&#x500B;&#x55CE;&#xFF1F;&#x4E86;&#x89E3;&#x8A2D;&#x8A08;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x5E79;&#x561B;&#x5462;&#xFF1F;&#x6211;&#x5728;&#x5B78;&#x7FD2;&#x524D;&#x7AEF;&#x4E00;&#x9663;&#x5B50;&#x5F8C;&#x5DF2;&#x7D93;&#x80FD;&#x9806;&#x5229;&#x523B;&#x51FA;&#x60F3;&#x8981;&#x7684;&#x7248;&#x578B;&#xFF0C;&#x4E5F;&#x719F;&#x6089;&#x6A19;&#x7C64;&#x7684;&#x4F7F;&#x7528;&#x3001;&#x4E86;&#x89E3;&#x8A9E;&#x610F;&#x5316;&#x7684;&#x91CD;&#x8981;&#xFF0C;&#x4F46;&#x662F;&#x9762;&#x5C0D; CSS &#x537B;&#x4E00;&#x76F4;&#x6C92;&#x6709;&#x5728;&#x9032;&#x6B65;&#x7684;&#x611F;&#x89BA;&#xFF0C;&#x540C;&#x6A23;&#x7684; CSS &#x6703;&#x5728;&#x4E0D;&#x7D93;&#x610F;&#x4E2D;&#x91CD;&#x8907;&#x4F7F;&#x7528;&#x597D;&#x5E7E;&#x6B21;&#x3001;&#x6C92;&#x6709;&#x4E00;&#x500B;&#x898F;&#x5283;&#xFF0C;&#x5F8C;&#x4F86;&#x56E0;&#x70BA;&#x63A5;&#x89F8;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x8A2D;&#x8A08;&#x6A21;&#x5F0F;&#x6211;&#x624D;&#x6162;&#x6162;&#x7406;&#x89E3;&#x826F;&#x597D;&#x7684;&#x8A2D;&#x8A08;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x5E6B;&#x52A9;&#x7A0B;&#x5F0F;&#x78BC;&#x66F4;&#x5BB9;&#x6613;&#x7DAD;&#x8B77;&#x751A;&#x81F3;&#x64F4;&#x5145;&#xFF0C;&#x5BEB;&#x8D77;&#x4F86;&#x4E5F;&#x6703;&#x66F4;&#x9806;&#x624B;&#xFF01;</p>
+<a id="more"></a>
+
+<p>&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x6E05;&#x695A;&#x81EA;&#x5DF1;&#x76EE;&#x524D;&#x60C5;&#x6CC1;&#xFF0C;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x7BC4;&#x4F8B;&#x4F86;&#x4E86;&#x89E3;&#x662F;&#x5426;&#x9700;&#x8981;&#x5B78;&#x7FD2;</p>
+<h3 id="&#x7BC4;&#x4F8B;&#x4E00;"><a href="#&#x7BC4;&#x4F8B;&#x4E00;" class="headerlink" title="&#x7BC4;&#x4F8B;&#x4E00;"></a>&#x7BC4;&#x4F8B;&#x4E00;</h3><ul>
+<li>&#x60F3;&#x8981;&#x7D66; card &#x6A23;&#x5F0F;&#x6642;&#x6703;&#x7528; <code>.content .card {...}</code> &#x800C;&#x4E0D;&#x662F; <code>.card {...}</code></li>
+</ul>
+<p></p><figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x61C9;&#x8A72;&#x5F88;&#x591A;&#x4EBA;&#x90FD;&#x6709;&#x4F7F;&#x7528;&#x904E;&#x9019;&#x6A23;&#x7684;&#x5BEB;&#x6CD5;&#xFF0C;&#x89BA;&#x5F97; <code>.content .card</code> &#x6B0A;&#x91CD;&#x5206;&#x6578;&#x8F03;&#x9AD8;&#xFF0C;&#x968E;&#x5C64;&#x4E5F;&#x4E0D;&#x6703;&#x904E;&#x591A;&#xFF0C;&#x6703;&#x7528;&#x9019;&#x7A2E;&#x5BEB;&#x6CD5;&#x5176;&#x5BE6;&#x5F88;&#x5408;&#x7406;</p>
+<h3 id="&#x7BC4;&#x4F8B;&#x4E8C;"><a href="#&#x7BC4;&#x4F8B;&#x4E8C;" class="headerlink" title="&#x7BC4;&#x4F8B;&#x4E8C;"></a>&#x7BC4;&#x4F8B;&#x4E8C;</h3><ul>
+<li>&#x6703;&#x628A;&#x4E00;&#x500B;&#x6771;&#x897F;&#x7684; CSS &#x90FD;&#x5168;&#x585E;&#x5728;&#x4E00;&#x500B; class &#x88E1;&#x9762;</li>
+</ul>
+<p></p><figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>123<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p></p><figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.btn</span> {</span><br><span class="line">  <span class="hljs-attribute">display</span>: block;</span><br><span class="line">  <span class="hljs-attribute">color</span>: white;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: blue;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>;</span><br><span class="line">  <span class="hljs-attribute">text-decoration</span>:none;</span><br><span class="line">  <span class="hljs-attribute">text-align</span>:center;</span><br><span class="line">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">2px</span>;</span><br><span class="line">  <span class="hljs-attribute">cursor</span>: pointer;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x5982;&#x679C;&#x4EE5;&#x4E0A;&#x5169;&#x7A2E;&#x90FD;&#x662F;&#x4F60;&#x76EE;&#x524D;&#x4F7F;&#x7528;&#x7684;&#x64B0;&#x5BEB;&#x65B9;&#x5F0F;&#xFF0C;&#x90A3;&#x606D;&#x559C;&#x4F60;&#x53EF;&#x4EE5;&#x7E7C;&#x7E8C;&#x770B;&#x4E0B;&#x53BB;&#x4E86;XD</p>
+<hr>
+<h2 id="OOCSS"><a href="#OOCSS" class="headerlink" title="OOCSS"></a>OOCSS</h2><p>OOCSS &#x662F; Object Oriented CSS &#x7684;&#x7E2E;&#x5BEB;&#xFF0C;&#x662F; CSS &#x7684;&#x67B6;&#x69CB;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x9019;&#x500B;&#x539F;&#x5247;&#x4E0B;&#x64B0;&#x5BEB;&#x7684; CSS &#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x9EDE;&#xFF1A;</p>
+<ul>
+<li>&#x5BB9;&#x5668;&#x8207;&#x5167;&#x5BB9;&#x5206;&#x96E2;</li>
+<li>&#x7D50;&#x69CB;&#x8207;&#x6A23;&#x5F0F;&#x5206;&#x96E2;</li>
+</ul>
+<h3 id="&#x5BB9;&#x5668;&#x8207;&#x5167;&#x5BB9;&#x5206;&#x96E2;"><a href="#&#x5BB9;&#x5668;&#x8207;&#x5167;&#x5BB9;&#x5206;&#x96E2;" class="headerlink" title="&#x5BB9;&#x5668;&#x8207;&#x5167;&#x5BB9;&#x5206;&#x96E2;"></a>&#x5BB9;&#x5668;&#x8207;&#x5167;&#x5BB9;&#x5206;&#x96E2;</h3><p><img src="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-1.png?alt=media&amp;token=c6309240-d6be-451a-8450-ad250ebbf46b" alt="&#x5BB9;&#x5668;&#x8207;&#x5167;&#x5BB9;&#x5206;&#x96E2;&#xFF0C;&#x5716;&#x7247;&#x4F86;&#x81EA;&#x516D;&#x89D2;&#x5B78;&#x9662;"></p>
+<p>&#x7C21;&#x55AE;&#x4F86;&#x8AAA;&#xFF0C; <code>&#x5167;&#x5BB9;</code> &#x5C31;&#x662F;&#x4F60;&#x7684;&#x5143;&#x4EF6;&#xFF0C;&#x800C; <code>&#x5BB9;&#x5668;</code> &#x5C31;&#x662F;&#x5305;&#x4F4F;&#x5143;&#x4EF6;&#x6216;&#x5176;&#x4ED6;&#x5167;&#x5BB9;&#x7684;&#x5916;&#x5C64;</p>
+<p>&#x7576;&#x5BB9;&#x5668;&#x8207;&#x5167;&#x5BB9;&#x5206;&#x96E2;&#x6642;&#xFF0C;&#x5BB9;&#x5668;&#x7684;&#x91CD;&#x7528;&#x6027;&#x5C31;&#x6703;&#x8B8A;&#x9AD8;&#x3001;&#x8B8A;&#x5F48;&#x6027;&#x800C;&#x4E0D;&#x6703;&#x53D7;&#x5230;&#x547D;&#x540D;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-2.png?alt=media&amp;token=91eb0345-9920-429d-a476-afb690966fc0" alt="header &#x5340;&#x584A;"></p>
+<p></p><figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu&quot;</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span><br><span class="line">  .header .menu li {...}</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-3.png?alt=media&amp;token=f05fbb08-d544-46cd-8c14-3c3f3cd58442" alt="footer &#x5340;&#x584A;"></p>
+<p></p><figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu&quot;</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span><br><span class="line">  .footer .menu li {...}</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x660E;&#x660E;&#x662F;&#x540C;&#x6A23;&#x7684;&#x5167;&#x5BB9;&#xFF0C;&#x537B;&#x56E0;&#x70BA;&#x5916;&#x5C64;&#x5F9E; header &#x63DB;&#x6210; footer &#x6240;&#x4EE5;&#x9700;&#x8981;&#x518D;&#x5BEB;&#x4E00;&#x6B21; CSS<br>&#x65BC;&#x662F;&#x6211;&#x5011;&#x5229;&#x7528;<strong>&#x5BB9;&#x5668;&#x548C;&#x5167;&#x5BB9;&#x5206;&#x96E2;</strong>&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x518D;&#x91CD;&#x5BEB;&#x4E00;&#x6B21;</p>
+<p></p><figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">&lt;!--header--&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-12&quot;</span>&gt;</span></span><br><span class="line">   <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu&quot;</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">   <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">   ...</span><br><span class="line">  <span class="hljs-comment">&lt;!--footer--&gt;</span></span><br><span class="line"> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-12&quot;</span>&gt;</span></span><br><span class="line">   <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu&quot;</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">   <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span><br><span class="line">  .menu li {...}</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x53EF;&#x4EE5;&#x767C;&#x73FE;&#x6539;&#x6210;&#x5206;&#x96E2;&#x7684;&#x8A2D;&#x8A08;&#x65B9;&#x5F0F;&#x5F8C;</p>
+<ul>
+<li>CSS &#x7684;&#x90E8;&#x5206;&#x662F;&#x53EF;&#x4EE5;&#x5171;&#x7528;&#x7684;</li>
+<li>CSS &#x4E0D;&#x518D;&#x53D7;&#x5230;&#x539F;&#x672C;&#x547D;&#x540D;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x5BEB;&#x6210; <code>.menu li</code> &#x800C;&#x4E0D;&#x662F; <code>.col-12 .menu li</code></li>
+</ul>
+<p>&#x7D9C;&#x5408;&#x4EE5;&#x4E0A;&#x5169;&#x9EDE;&#xFF0C;&#x9019;&#x6642;&#x518D;&#x56DE;&#x9867;&#x7BC4;&#x4F8B;&#x4E00;&#x7684;&#x554F;&#x984C;&#xFF0C;&#x4F60;&#x6703;&#x5BEB; .content .card {&#x2026;} &#x9084;&#x662F; .card {&#x2026;} &#x5462;&#xFF1F;</p>
+<p></p><figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x8070;&#x660E;&#x7684;&#x4F60;&#x7406;&#x89E3;&#x904E;&#x5F8C;&#x5C31;&#x77E5;&#x9053; .card {&#x2026;} &#x624D;&#x662F;&#x6211;&#x5011;&#x6703;&#x9078;&#x64C7;&#x7684;&#xFF0C;&#x539F;&#x56E0;&#x5728;&#x65BC; content &#x662F;&#x5BB9;&#x5668;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x6703;&#x53BB;&#x4F7F;&#x7528;&#x5BB9;&#x5668;&#x7576;&#x547D;&#x540D;&#x7684;&#x958B;&#x982D;&#xFF0C;&#x5C31;&#x50CF;&#x6211;&#x5011;&#x4E0D;&#x6703;&#x62FF; .col &#x7576;&#x958B;&#x982D;&#x4E00;&#x6A23;</p>
+<p>&#x8B1B;&#x5B8C;&#x5BB9;&#x5668;&#x8207;&#x5167;&#x5BB9;&#x5206;&#x96E2;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x6211;&#x5011;&#x4F86;&#x770B; Bootstrap &#x662F;&#x5982;&#x4F55;&#x61C9;&#x7528;&#x5728;&#x5143;&#x4EF6;&#x4E0A;</p>
+<hr>
+<p>Bootstrap &#x5143;&#x4EF6;&#x4E5F;&#x53EF;&#x4EE5;&#x5206;&#x70BA;&#x5BB9;&#x5668;&#x8207;&#x5167;&#x5BB9;&#xFF08;&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x5305;&#x5167;&#x5BB9;&#xFF09;</p>
+<ul>
+<li>&#x5BB9;&#x5668;&#x578B;&#x5143;&#x4EF6;&#xFF1A;&#x5982; <code>Grid</code>&#x3001;<code>Card</code>&#x3001;<code>Forms</code>&#x3001; <code>Modal</code> &#x2026;</li>
+<li>&#x5167;&#x5BB9;&#x578B;&#x5143;&#x4EF6;&#xFF1A;&#x5982; <code>Alerts</code> &#x3001; <code>Badge</code> &#x3001;<code>Breadcrumb</code> &#x3001;<code>Buttons</code> &#x2026;</li>
+</ul>
+<ol>
+<li><p>Card &#x5361;&#x7247;&#xFF1A;Card &#x662F; <code>&#x5BB9;&#x5668;</code> &#xFF0C;&#x800C; Button &#x5C6C;&#x65BC; <code>&#x5167;&#x5BB9;</code></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-4.png?alt=media&amp;token=abb92e93-16e9-442a-8b84-0d93cbdc277a" alt="Card + Button"></p>
+<p> </p><figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 18rem;&quot;</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-img-top&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-body&quot;</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">h5</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-title&quot;</span>&gt;</span>Card title<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-text&quot;</span>&gt;</span>Some quick example text to build on the card title and make up the bulk of the card&apos;s content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span>&gt;</span>Go somewhere<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+</li>
+<li><p>List &#x5217;&#x8868;&#xFF1A;Card &#x662F; <code>&#x5BB9;&#x5668;</code> &#xFF0C;&#x800C; List &#x5C6C;&#x65BC; <code>&#x5167;&#x5BB9;</code></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-5.png?alt=media&amp;token=a2e04ccb-698c-4db9-b73d-b76c593afa0a" alt="List + Card"></p>
+<p> </p><figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 18rem;&quot;</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-img-top&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-body&quot;</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">h5</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-title&quot;</span>&gt;</span>Card title<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-text&quot;</span>&gt;</span>Some quick example text to build on the card title and make up the bulk of the card&apos;s content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-group list-group-flush&quot;</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-group-item&quot;</span>&gt;</span>Cras justo odio<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-group-item&quot;</span>&gt;</span>Dapibus ac facilisis in<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-group-item&quot;</span>&gt;</span>Vestibulum at eros<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+</li>
+</ol>
+<p>&#x770B;&#x5B8C;&#x5BB9;&#x5668;&#x8207;&#x5167;&#x5BB9;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x5011;&#x4F86;&#x62C6;&#x89E3; Bootstrap &#x7684;&#x5143;&#x4EF6; class &#x8A2D;&#x8A08;&#x5427;&#xFF01;</p>
+<h3 id="&#x7D50;&#x69CB;&#x8207;&#x6A23;&#x5F0F;&#x5206;&#x96E2;"><a href="#&#x7D50;&#x69CB;&#x8207;&#x6A23;&#x5F0F;&#x5206;&#x96E2;" class="headerlink" title="&#x7D50;&#x69CB;&#x8207;&#x6A23;&#x5F0F;&#x5206;&#x96E2;"></a>&#x7D50;&#x69CB;&#x8207;&#x6A23;&#x5F0F;&#x5206;&#x96E2;</h3><p>&#x4F7F;&#x7528; Iphone &#x7684;&#x4EBA;&#x61C9;&#x8A72;&#x6709;&#x73A9;&#x904E;&#x6216;&#x662F;&#x770B;&#x904E; Animoji&#xFF0C;&#x4ED6;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x9078;&#x64C7;&#x81C9;&#x90E8;&#x7684;&#x5668;&#x5B98;&#x4F86;&#x6253;&#x9020;&#x51FA;&#x81EA;&#x5DF1;&#x7684;&#x89D2;&#x8272;</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/images-5a265.appspot.com/o/hexo%2F3-6.png?alt=media&amp;token=c64851eb-8fff-4eb5-9c22-1cb18948a6c3" alt="Animoji"></p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x628A;&#x539F;&#x672C;&#x6240;&#x6709;&#x5668;&#x5B98;&#x7684;&#x9810;&#x8A2D;&#x6A23;&#x5F0F;&#x60F3;&#x50CF;&#x6210;&#x300C;&#x7D50;&#x69CB;&#x300D;&#xFF08;&#x5DE6;&#x5716;&#xFF09;&#xFF0C;&#x7D50;&#x69CB;&#x662F;&#x4E00;&#x500B;&#x5143;&#x4EF6;&#x7684;&#x57FA;&#x5E95;&#xFF08;base&#xFF09;&#x50CF;&#x662F;&#xFF1A;&#x5BEC;&#x5EA6;&#x3001;&#x5713;&#x89D2;&#x3001;&#x5B57;&#x9AD4;&#x5927;&#x5C0F;&#x7B49;&#x7B49;</p>
+<p>&#x800C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x9078;&#x64C7;&#x982D;&#x9AEE;&#x984F;&#x8272;&#x3001;&#x76AE;&#x819A;&#x984F;&#x8272;&#x7B49;&#x7B49;&#x7684;&#x5C31;&#x662F;&#x6240;&#x8B02;&#x7684;&#x300C;&#x6A23;&#x5F0F;&#x300D;&#xFF08;&#x53F3;&#x5716;&#xFF09;&#xFF0C;&#x5728; Bootstrap &#x6309;&#x9215;&#x5143;&#x4EF6;&#x4E2D;&#x5C31;&#x662F;&#x4EE5;&#x984F;&#x8272;&#x5340;&#x5206;&#xFF08;&#x5305;&#x542B;&#x5B57;&#x9AD4;&#x984F;&#x8272;&#x3001;&#x80CC;&#x666F;&#x984F;&#x8272;&#xFF09;</p>
+<p>&#x9019;&#x6642;&#x6211;&#x5011;&#x518D;&#x56DE;&#x5230;&#x4E00;&#x958B;&#x982D;&#x7684;&#x7BC4;&#x4F8B;&#x4E8C;</p>
+<p></p><figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>123<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p></p><figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.btn</span> {</span><br><span class="line">  <span class="hljs-attribute">display</span>: block;</span><br><span class="line">  <span class="hljs-attribute">color</span>: white;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: blue;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>;</span><br><span class="line">  <span class="hljs-attribute">text-decoration</span>:none;</span><br><span class="line">  <span class="hljs-attribute">text-align</span>:center;</span><br><span class="line">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">2px</span>;</span><br><span class="line">  <span class="hljs-attribute">cursor</span>: pointer;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x5229;&#x7528;&#x7D50;&#x69CB;&#x8207;&#x6A23;&#x5F0F;&#x5206;&#x96E2;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x6211;&#x5011;&#x518D;&#x91CD;&#x5BEB;&#x4E00;&#x6B21;</p>
+<p></p><figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span>&gt;</span>123<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p></p><figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.btn</span> {</span><br><span class="line">  <span class="hljs-attribute">display</span>: block;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>;</span><br><span class="line">  <span class="hljs-attribute">text-decoration</span>:none;</span><br><span class="line">  <span class="hljs-attribute">text-align</span>:center;</span><br><span class="line">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">2px</span>;</span><br><span class="line">  <span class="hljs-attribute">cursor</span>: pointer;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.btn-primary</span>{</span><br><span class="line">  <span class="hljs-attribute">color</span>: white;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: blue;</span><br><span class="line">  <span class="hljs-attribute">border</span>: lightblue;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x61C9;&#x8A72;&#x6709;&#x770B;&#x5230;&#x5728; class &#x7684;&#x90E8;&#x5206;&#x591A;&#x62C6;&#x51FA;&#x4E86; btn-primary</p>
+<p>&#x4ED6;&#x7684;&#x512A;&#x9EDE;&#x662F;</p>
+<ul>
+<li>&#x6309;&#x9215;&#x9700;&#x8981;&#x63DB;&#x4E00;&#x500B;&#x984F;&#x8272;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5148;&#x53BB;&#x627E;&#x5230;&#x90A3;&#x9846;&#x6309;&#x9215;&#x7684; CSS &#x7136;&#x5F8C;&#x6539;&#x6389;&#x984F;&#x8272;</li>
+<li>&#x7576;&#x60F3;&#x8981;&#x5BEB;&#x7B2C;&#x4E8C;&#x9846;&#x6309;&#x9215;&#x5728;&#x4ED6;&#x65C1;&#x908A;&#x6642;&#xFF0C;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x91CD;&#x8907;&#x5BEB;&#x4E00;&#x5806;&#x985E;&#x4F3C;&#x7684; CSS&#xFF0C;&#x800C;&#x662F;&#x628A;<strong>&#x4E0D;&#x4E00;&#x6A23;&#x7684;&#x90E8;&#x5206;&#x62BD;&#x96E2;&#x51FA;&#x4F86;&#x7BA1;&#x7406;&#xFF0C;&#x4E00;&#x6A23;&#x7684;&#x90E8;&#x5206;&#x5C31;&#x4FDD;&#x7559;&#x8D77;&#x4F86;&#x4E0D;&#x6703;&#x53BB;&#x52D5;&#x5B83;</strong></li>
+</ul>
+<h2 id="&#x7E3D;&#x7D50;"><a href="#&#x7E3D;&#x7D50;" class="headerlink" title="&#x7E3D;&#x7D50;"></a>&#x7E3D;&#x7D50;</h2><p>&#x4EE5;&#x4E0A;&#x5C31;&#x662F; OOCSS &#x7684;&#x5F37;&#x5927;&#x4E4B;&#x8655;&#xFF0C;&#x7406;&#x89E3;&#x9019;&#x500B;&#x8A2D;&#x8A08;&#x6A21;&#x5F0F;&#x5F8C;&#x4F60;&#x4E5F;&#x80FD;&#x5957;&#x7528;&#x4ED6;&#x7684;&#x65B9;&#x6CD5;&#x8A2D;&#x8A08;&#x51FA;&#x5C6C;&#x65BC;&#x81EA;&#x5DF1;&#x7684;&#x5143;&#x4EF6;&#xFF0C;&#x4E0D;&#x4F46;&#x597D;&#x7DAD;&#x8B77;&#x597D;&#x7BA1;&#x7406;&#xFF0C;&#x4E5F;&#x80FD;&#x5927;&#x5927;&#x6E1B;&#x5C11; CSS &#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x5F88;&#x8B9A;&#xFF5E;&#x5FEB;&#x4F86;&#x8A66;&#x8A66;&#x5427;&#xFF01;</p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/CSS/">#CSS</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/CSS-%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/">#CSS 設計模式</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/f2e/20200412/393573562/">Flex 修煉時光屋</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="addthis_inline_share_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ece3c804b2a1890"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">評論</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yinmin8610.github.io/CSS/20200603/1243066710/';
+        this.page.identifier = 'CSS/20200603/1243066710/';
+        
+        this.language = 'zh';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'yimmin8610' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 yinmin8610&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="CC" href="">
+                    
+                    <i class="fab fa-creative-commons"></i>
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="CC-by" href="">
+                    
+                    <i class="fab fa-creative-commons-by"></i>
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="CC-nc" href="">
+                    
+                    <i class="fab fa-creative-commons-nc"></i>
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-HK");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
